@@ -21,6 +21,16 @@ public class Main {
         value[0] = 99;
     }
 
+    public static void changePerson(Person person) {
+        person = new Person("Lagutenko", "Ilya");
+        System.out.println("person.toString() = " + person.toString());
+    }
+
+    public static void changePerson2(Person person) {
+        person.setSurname("Lagutenko");
+        person.setName("Ilya");
+        System.out.println("person.toString() = " + person.toString());
+    }
     public static void main(String[] args) {
         System.out.println("Задание 5:");
         int value = 33; // Объявили переменную типа int и присвоили ей значение 33.
@@ -66,6 +76,30 @@ public class Main {
         // В первом случае(задание 7) мы присвоили копии ссылки переменной вне метода новое значение(объект)
         // соответственно значение(объект) переменоой вне метода остается преждним.
         // Во втором же случае(задание 8) мы изменили текущий объект копии ссылки переменной вне метода
+        // соответсвенно значение(объект) переменной вне метода также изменится.
+
+        System.out.println("Задание 9:");
+        Person person = new Person("Trubetskoy", "Lyapis");
+        changePerson(person);
+        System.out.println("person.toString() = " + person.toString());
+        // Переменная Person также является объектом, и в метод changePerson передается копия значения(ссылка)
+        // переменной person. А так как копия является самостоятельной единицей
+        // то присваивание ей нового значения, не повлияет на значения переменной вне метода(переданая в этот метод).
+
+        System.out.println("Задание 10:");
+        Person person1 = new Person("Trubetskoy", "Lyapis");
+        System.out.println("person1.toString() = " + person1.toString());
+        changePerson2(person1);
+        System.out.println("person1.toString() = " + person1.toString());
+        // В данном случае в метод changePerson2 также передается копия значения(ссылка)
+        // переменной person1, но в отличии от прошлого задания, где мы присваивали копии ссылки новой объект
+        // в этом задании мы изменяем текущий объект, а точнее строки name и surname.
+        // А так как ссылка в переменной вне метода и её копия в методе ссылаются на один объект
+        // то и в объекте по ссылке из переменной вне метода тоже изменится первая ячейка.
+
+        // В задании №9 мы присвоили копии ссылки переменной вне метода новое значение(объект)
+        // соответственно значение(объект) переменоой вне метода остается преждним.
+        // В задании №10 мы изменили текущий объект копии ссылки переменной вне метода
         // соответсвенно значение(объект) переменной вне метода также изменится.
     }
 }
